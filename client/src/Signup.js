@@ -6,6 +6,7 @@ function SignUp({ setUser}) {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [errors, setErrors] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -24,6 +25,9 @@ function SignUp({ setUser}) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user))
+      }
+      else {
+        r.json().then((err) => setErrors(err.error));
       }
     });
   }
@@ -74,6 +78,9 @@ function SignUp({ setUser}) {
         />
         <button type="submit">Sign Up</button>
       </form>
+      {errors.map((err) => (
+         <h1>{err}</h1>
+        ))}
     </div>
   );
 }

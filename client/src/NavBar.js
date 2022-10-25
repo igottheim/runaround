@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ShoeList from "./ShoeList";
 
 function NavBar({ user, setUser }) {
   function handleLogoutClick() {
@@ -25,6 +26,7 @@ function NavBar({ user, setUser }) {
           <>
             <Link to="/signup">Signup</Link>
             <Link to="/login">Login</Link>
+            <Link to="/shoe">Shoe List</Link>
           </>
         )}
       </div>

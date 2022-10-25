@@ -1,11 +1,10 @@
-function Home({ user, shoe, review }) {
-    
-   
-    
+import ShoeUser from "./ShoeUser"
+
+function Home({ user, shoe, review, handleReviewDelete, deleteUser, setUser}) {
+
+
     if (user) {
-        console.log(shoe)
-        console.log(user.shoes)
-      return <h1>Welcome, {user.username}!</h1>;
+      return <ShoeUser user = {user} shoe = {shoe} review = {review} handleDeleteReview = {handleReviewDelete} deleteUser = {deleteUser} setUser = {setUser}></ShoeUser> 
     } else {
       return <h1>Please Login or Sign Up</h1>;
     }

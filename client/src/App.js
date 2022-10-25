@@ -4,29 +4,27 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import Home from "./Home";
 import SignUp from "./Signup";
-import ShoeUser from "./ShoeUser";
+import ShoeList from "./ShoeList";
 
 function App() {
   const [count, setCount] = useState(0);
   const [users, setUsers] = useState([])
   const [shoes, setShoes] = useState([])
   const [reviews, setReviews] = useState([])
-  const [currentUser, setcurrentUser] = useState([])
+  const [currentUser, setcurrentUser] = useState(null)
   const [errors1, setErrors] = useState([])
 
 
-// useEffect(() => {
-//   fetch("/hello")
-//   .then((r) => r.json())
-//   .then((data) => setCount(data.count));
-//   }, []);
 
-useEffect(()=>{
-  fetch('/users')
-  .then(r=> r.json())
-  .then(data => setUsers(data))
-  }
-  ,[])
+useEffect(() => {
+  // auto-login
+  fetch("/me").then((r) => {
+    if (r.ok) {
+      r.json().then((user) => setcurrentUser(user));
+    }
+  });
+}, []);
+
 
 useEffect(()=>{
   fetch('/shoes')
@@ -36,12 +34,12 @@ useEffect(()=>{
   ,[])
 
 
-useEffect(()=>{
-  fetch('/reviews')
-  .then(r=> r.json())
-  .then(data => setReviews(data))
-  }
-  ,[])
+// useEffect(()=>{
+//   fetch('/reviews')
+//   .then(r=> r.json())
+//   .then(data => setReviews(data))
+//   }
+//   ,[])
 
 
   function setUser(user)
@@ -64,6 +62,21 @@ useEffect(()=>{
     console.log(errors1)
   }
 
+
+  function handleDeleteReview(e)
+  {
+      setReviews(reviews.filter((item)=> item.id!== e.id))
+  }
+
+  function deleteUser(e)
+  {
+    
+    fetch(`/users/${e.id}`,
+        {method:"DELETE"
+        }).then((r) => r.json()).then(() => setcurrentUser(null))
+  }
+
+  console.log(currentUser)
   return (
     <BrowserRouter>
       <div className="App">
@@ -72,13 +85,14 @@ useEffect(()=>{
         {currentUser ? (
           <Switch>
             <Route path="/">
-              <Home user = {currentUser} shoe = {shoes}></Home>
+              <Home user = {currentUser} shoe = {shoes} review = {reviews} handleReviewDelete= {handleDeleteReview} deleteUser = {deleteUser}></Home>
             </Route>
-
-
           </Switch>
         ) : (
           <Switch>
+             <Route path="/shoe">
+             <ShoeList shoe = {shoes} setShoes = {(e)=>setShoes(...e)}/>
+            </Route>
             <Route path="/signup">
               <SignUp setUser={setUser} />
             </Route>

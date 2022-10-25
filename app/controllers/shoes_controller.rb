@@ -46,6 +46,6 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     end
 
     def shoe_params
-        params.permit(:name, :price)
+        params.permit(:name, :price, :image_url)
     end
 end
