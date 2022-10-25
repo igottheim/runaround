@@ -45,8 +45,10 @@ function ShoeUser({ user, shoe, review, handleDeleteReview, deleteUser, handleUs
     let cool = user.shoes.map((u)=> <ul>{u.name}: ${u.price} <button onClick = {()=> handleDeleteShoe(u)}>Delete</button></ul>)
     console.log(review.filter((u)=> u.user_id === user.id))
     let cool2 = user.reviews.map((u)=> <ul>{u.shoe_review}  <button onClick = {()=> handleDeleteReview(u)}>Delete</button></ul>)
-
-
+    
+    
+    let shoemap = user.shoes.map((item)=> <option value={item.id}>{item.name}</option> )
+    let shoemapz = shoe.map((item)=> <option value={item.id}>{item.name}</option> )
     
 
 return (
@@ -81,10 +83,24 @@ return (
           onChange={(e) => setShoeReview(e.target.value)}
         />
        <select name="selectList" id="selectList">
-            <option value="option 1">Option 1</option>
-        <option value="option 2">Option 2</option>
-        <option value="option 2">Option 3</option>
-        <option value="option 2">Option 4</option>
+            {shoemapz}
+   
+        </select>
+        <button type="submit">Review</button>
+      </form>
+      <form onSubmit={handleUserChange}>
+        <h1>Add A Review</h1>
+        <label htmlFor="show_review">Username</label>
+        <input
+          type="dropdown"
+          id="shoe_review"
+          autoComplete="off"
+          value={username}
+          onChange={(e) => setShoeReview(e.target.value)}
+        />
+       <select name="selectList" id="selectList">
+            {shoemap}
+   
         </select>
         <button type="submit">Review</button>
       </form>
