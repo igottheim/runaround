@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ShoeList from "./ShoeList";
+import './App.css';
+
 
 function NavBar({ user, setUser }) {
   function handleLogoutClick() {
@@ -14,7 +16,7 @@ function NavBar({ user, setUser }) {
   return (
     <header>
       <div>
-        <Link to="/">Home</Link>
+        <Link class = "link" to="/">Home</Link>
       </div>
       <div>
         {user ? (
@@ -24,9 +26,9 @@ function NavBar({ user, setUser }) {
           </>
         ) : (
           <>
-            <Link to="/signup">Signup</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/shoe">Shoe List</Link>
+            <Link class = "link" to="/signup">Signup</Link>
+            <Link class = "link" to="/login">Login</Link>
+            <Link class = "link" to="/shoe">Shoe List</Link>
           </>
         )}
       </div>

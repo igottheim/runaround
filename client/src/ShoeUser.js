@@ -1,6 +1,10 @@
 
 import React, { useState } from "react";
 
+import './App.css';
+
+
+
 function ShoeUser({ user, shoe, review, handleDeleteReview, deleteUser, handleUserChange, setUser}) {
     const [username, setUsername] = useState("");
     const [errors, setErrors] = useState([]);
@@ -44,7 +48,7 @@ function ShoeUser({ user, shoe, review, handleDeleteReview, deleteUser, handleUs
     console.log(review)
     let cool = user.shoes.map((u)=> <ul>{u.name}: ${u.price} <button onClick = {()=> handleDeleteShoe(u)}>Delete</button></ul>)
     console.log(review.filter((u)=> u.user_id === user.id))
-    let cool2 = user.reviews.map((u)=> <ul>{u.shoe_review}  <button onClick = {()=> handleDeleteReview(u)}>Delete</button></ul>)
+    let cool2 = user.reviews.map((u)=> <ul> {u.shoe_review} <button onClick = {()=> handleDeleteReview(u)}>Delete</button></ul>)
     
     
     let shoemap = user.shoes.map((item)=> <option value={item.id}>{item.name}</option> )
@@ -70,6 +74,7 @@ return (
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+        {username}
         <button type="submit">UserName</button>
       </form>
       <form onSubmit={handleUserChange}>

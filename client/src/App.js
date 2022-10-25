@@ -6,6 +6,9 @@ import Home from "./Home";
 import SignUp from "./Signup";
 import ShoeList from "./ShoeList";
 
+import './App.css';
+
+
 function App() {
   const [count, setCount] = useState(0);
   const [users, setUsers] = useState([])

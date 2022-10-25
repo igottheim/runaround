@@ -1,8 +1,8 @@
 body {
   background: linear-gradient(
     90deg,
-    rgb(55, 55, 120) 0%,
-    rgb(55, 55, 75) 100%
+    rgb(107, 107, 183) 0%,
+    rgb(147, 147, 173) 100%
   );
 }
 
@@ -11,10 +11,20 @@ body {
 }
 
 .App{
-  width: 500px;
+  width: 750px;
   margin: auto;
-  border: 3px solid #73AD21;
+  border: 10px solid #73AD21;
 
 }
 
+button{
+  background-color: blue;
+}
+
+.link {
+font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-size: large;
+margin-right: 20px;
+align-self: center;
+}
 
