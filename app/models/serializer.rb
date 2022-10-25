@@ -1,0 +1,2 @@
+class Serializer < ApplicationRecord
+end
