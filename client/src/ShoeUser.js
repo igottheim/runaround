@@ -14,9 +14,11 @@ function ShoeUser({ user, shoe, review, handleDeleteReview, deleteUser, handleUs
 
     function handleDeleteReview(e)
     {
+      
         fetch(`/reviews/${e.id}`,
         {method:"DELETE"
-        }).then((r) => r.json()).then((user) => handleDeleteReview(user))
+        }).then((r) => r.json())
+        .then((e) => handleDeleteReview(e))
     }
 
 
@@ -67,8 +69,9 @@ function ShoeUser({ user, shoe, review, handleDeleteReview, deleteUser, handleUs
           if (r.ok) {
             r.json().then(() => setReview({
               "shoe_id":parseInt(e.target[0].value) ,
-              "user_id": user.id,
-              "shoe_review":e.target[1].value
+              "user_id": parseInt(user.id),
+              "shoe_review":e.target[1].value,
+              "id": parseInt(review.length)
             }))
             alert(`Review Added!`)
           }
@@ -82,9 +85,10 @@ function ShoeUser({ user, shoe, review, handleDeleteReview, deleteUser, handleUs
     let cool = user.shoes.map((u)=> <ul>{u.name}: ${u.price} <button onClick = {()=> handleDeleteShoe(u)}>Delete</button></ul>)
     // console.log(review.filter((u)=> u.user_id === user.id))
     let cool2 = user.reviews.map((u)=> <ul> {u.shoe_review} <button onClick = {()=> handleDeleteReview(u)}>Delete</button></ul>)
+    let cool3 = review.filter((item)=> item.user_id === user.id).map((u)=> <ul> Shoe{u.shoe_id}: {u.shoe_review} <button onClick = {()=> handleDeleteReview(u)}>Delete</button></ul>)
+    // console.log(cool3)
     
-    
-    let shoemap = user.shoes.map((item)=> <option value={item.id}>{item.name}</option> )
+  // console.log(user.shoes.map((item)=> <option value={item.id}>{item.name}</option> ))
     let shoemapz = shoe.map((item)=> <option value={item.id}>{item.name}</option> )
     
 
@@ -94,7 +98,7 @@ return (
     {cool}
 </ol>
 <ol> {user.first_name}'s Reviews
-    {cool2}</ol>
+    {cool3}</ol>
 
     <button onClick = {()=>deleteUser(user)} >Delete User</button>
     <form onSubmit={handleUserChange}>

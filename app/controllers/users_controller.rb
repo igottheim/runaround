@@ -37,6 +37,7 @@ class UsersController < ApplicationController
             user = User.find(params[:id])
             user.reviews.destroy
             user.destroy
+            session[:user_id] = "" 
     
             head :no_content
         end

@@ -6,6 +6,7 @@ class Shoe < ApplicationRecord
     validates :name, presence: true
     validates :name, uniqueness: true
     validates :price, presence: true
+    validates :price,  numericality: { only_float: true }
     validates :image_url, presence: true
 
 

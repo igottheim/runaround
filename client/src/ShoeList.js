@@ -21,11 +21,12 @@ function handleSubmit(e) {
       body: JSON.stringify({ name, price, image_url }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => setShoes([shoe, {
+        r.json().then(() => setShoes({
             name: name,
-            price: price,
+            price: parseInt(price),
             image_url: image_url
-        }]));
+            // id: parseInt(shoe.last.id+1)
+        }))
       }
       else {
         r.json().then((err) => setErrors(err.errors));
@@ -39,7 +40,7 @@ return(
     
     
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e)=> handleSubmit(e)}>
         <h1>Add A New Shoe</h1>
         <label htmlFor="name">name</label>
         <input

@@ -37,12 +37,12 @@ useEffect(()=>{
   ,[])
 
 
-// useEffect(()=>{
-//   fetch('/reviews')
-//   .then(r=> r.json())
-//   .then(data => setReviews(data))
-//   }
-//   ,[])
+useEffect(()=>{
+  fetch('/reviews')
+  .then(r=> r.json())
+  .then(data => setReviews(data))
+  }
+  ,[])
 
 
   function setUser(user)
@@ -52,12 +52,6 @@ useEffect(()=>{
 
   }
 
-  // function handleErrors(errors)
-  // {
-
-  //   setErrors(errors)
-  //   console.log(errors1)
-  // }
 
   if (errors1.length>0)
   {
@@ -68,23 +62,39 @@ useEffect(()=>{
   function setReview(e)
   {
    setReviews([...reviews, e])
-   console.log(reviews)
+   console.log(e)
+   
   }
 
 
+  function setShoes1(e)
+  {
+
+    setShoes([...shoes, e])
+  }
+
   function handleDeleteReview(e)
   {
+    console.log(e)
+    console.log(reviews)
       setReviews(reviews.filter((item)=> item.id!== e.id))
+      
   }
 
   function deleteUser(e)
   {
-    
+    console.log(e.id)
     fetch(`/users/${e.id}`,
         {method:"DELETE"
-        }).then((r) => r.json()).then(() => setcurrentUser(null))
+        })
+        .then((r) => r.json())
+        .then(() => setcurrentUser(null))
   }
 
+
+ 
+  // console.log(reviews)
+  // console.log(shoes)
   console.log(currentUser)
   return (
     <BrowserRouter>
@@ -94,13 +104,13 @@ useEffect(()=>{
         {currentUser ? (
           <Switch>
             <Route path="/">
-              <Home user = {currentUser} shoe = {shoes} review = {reviews} handleReviewDelete= {handleDeleteReview} deleteUser = {deleteUser} setReview = {setReview}></Home>
+              <Home user = {currentUser} shoe = {shoes} review = {reviews} handleDeleteReview= {handleDeleteReview} deleteUser = {deleteUser} setReview = {setReview} ></Home>
             </Route>
           </Switch>
         ) : (
           <Switch>
              <Route path="/shoe">
-             <ShoeList shoe = {shoes} setShoes = {(e)=>setShoes(...e)}/>
+             <ShoeList shoe = {shoes} setShoes = {setShoes1}/>
             </Route>
             <Route path="/signup">
               <SignUp setUser={setUser} />
