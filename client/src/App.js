@@ -53,18 +53,14 @@ useEffect(()=>{
   }
 
 
-  if (errors1.length>0)
-  {
-
-    console.log(errors1)
-  }
-
   function setReview(e)
   {
    setReviews([...reviews, e])
    console.log(e)
+  //  console.log(reviews)
    
   }
+
 
 
   function setShoes1(e)
@@ -73,26 +69,25 @@ useEffect(()=>{
     setShoes([...shoes, e])
   }
 
-  function handleDeleteReview(e)
+  function handleDeleteReviews(e)
   {
-    console.log(e)
-    console.log(reviews)
-      setReviews(reviews.filter((item)=> item.id!== e.id))
+    
+    setReviews(reviews.filter((item)=> item.id!== e.id))
       
   }
 
-  function deleteUser(e)
+  function setcurrentUser1(e)
   {
-    console.log(e.id)
-    fetch(`/users/${e.id}`,
-        {method:"DELETE"
-        })
-        .then((r) => r.json())
-        .then(() => setcurrentUser(null))
+    setcurrentUser(null)
+  
   }
 
+  function setUser1(e)
+  {
+    setcurrentUser(e)
+  }
 
- 
+ console.log(currentUser)
   // console.log(reviews)
   // console.log(shoes)
   console.log(currentUser)
@@ -104,7 +99,7 @@ useEffect(()=>{
         {currentUser ? (
           <Switch>
             <Route path="/">
-              <Home user = {currentUser} shoe = {shoes} review = {reviews} handleDeleteReview= {handleDeleteReview} deleteUser = {deleteUser} setReview = {setReview} ></Home>
+              <Home user = {currentUser} shoe = {shoes} review = {reviews} handleDeleteReviews= {handleDeleteReviews} setcurrentUser = {setcurrentUser1} setReview = {setReview} setUser = {setUser1} ></Home>
             </Route>
           </Switch>
         ) : (

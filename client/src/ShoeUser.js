@@ -1,11 +1,16 @@
 
 import React, { useState } from "react";
+import AspectRatio from '@mui/joy/AspectRatio';
+import Box from '@mui/joy/Box';
+import Button from '@mui/joy/Button';
+import Card from '@mui/joy/Card';
+import Typography from '@mui/joy/Typography';
 
 import './App.css';
 
 
 
-function ShoeUser({ user, shoe, review, handleDeleteReview, deleteUser, handleUserChange, setUser, setReview}) {
+function ShoeUser({ user, shoe, review, handleDeleteReviews,setcurrentUser, handleUserChange, setUser, setReview}) {
     const [username, setUsername] = useState("");
     const [errors, setErrors] = useState([]);
     const [shoe_review, setShoeReview] = useState("");
@@ -14,11 +19,12 @@ function ShoeUser({ user, shoe, review, handleDeleteReview, deleteUser, handleUs
 
     function handleDeleteReview(e)
     {
-      
+      // console.log(e)
         fetch(`/reviews/${e.id}`,
         {method:"DELETE"
-        }).then((r) => r.json())
-        .then((e) => handleDeleteReview(e))
+        })
+
+        handleDeleteReviews(e)
     }
 
 
@@ -49,6 +55,17 @@ function ShoeUser({ user, shoe, review, handleDeleteReview, deleteUser, handleUs
         });
       }
 
+      function deleteUser(e)
+      {
+        console.log(e)
+        fetch(`/users/${e.id}`,
+            {
+              method: "DELETE"
+            })
+           
+         setcurrentUser(null)
+      }
+    
       
       function handleUserAddReview(e) {
         e.preventDefault();
@@ -67,12 +84,7 @@ function ShoeUser({ user, shoe, review, handleDeleteReview, deleteUser, handleUs
           }),
         }).then((r) => {
           if (r.ok) {
-            r.json().then(() => setReview({
-              "shoe_id":parseInt(e.target[0].value) ,
-              "user_id": parseInt(user.id),
-              "shoe_review":e.target[1].value,
-              "id": parseInt(review.length)
-            }))
+            r.json().then((e) => setReview(e))
             alert(`Review Added!`)
           }
           else {
@@ -81,12 +93,8 @@ function ShoeUser({ user, shoe, review, handleDeleteReview, deleteUser, handleUs
         });
       }
   
-    // console.log(review)
-    let cool = user.shoes.map((u)=> <ul>{u.name}: ${u.price} <button onClick = {()=> handleDeleteShoe(u)}>Delete</button></ul>)
-    // console.log(review.filter((u)=> u.user_id === user.id))
-    let cool2 = user.reviews.map((u)=> <ul> {u.shoe_review} <button onClick = {()=> handleDeleteReview(u)}>Delete</button></ul>)
-    let cool3 = review.filter((item)=> item.user_id === user.id).map((u)=> <ul> Shoe{u.shoe_id}: {u.shoe_review} <button onClick = {()=> handleDeleteReview(u)}>Delete</button></ul>)
-    // console.log(cool3)
+    let cool3 = review.filter((item)=> item.user_id === user.id).map((u)=> <ul class = "cool" key ={u.shoe_review}> {u.shoe.name}: {u.shoe_review} <button onClick = {()=> handleDeleteReview(u)}>Delete</button></ul>)
+
     
   // console.log(user.shoes.map((item)=> <option value={item.id}>{item.name}</option> ))
     let shoemapz = shoe.map((item)=> <option value={item.id}>{item.name}</option> )
@@ -94,10 +102,7 @@ function ShoeUser({ user, shoe, review, handleDeleteReview, deleteUser, handleUs
 
 return (
     <>
-<ol>{user.first_name}'s Shoes
-    {cool}
-</ol>
-<ol> {user.first_name}'s Reviews
+<ol> {user.username}'s Reviews
     {cool3}</ol>
 
     <button onClick = {()=>deleteUser(user)} >Delete User</button>

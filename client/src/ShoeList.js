@@ -21,12 +21,7 @@ function handleSubmit(e) {
       body: JSON.stringify({ name, price, image_url }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then(() => setShoes({
-            name: name,
-            price: parseInt(price),
-            image_url: image_url
-            // id: parseInt(shoe.last.id+1)
-        }))
+        r.json().then((e) => setShoes(e))
       }
       else {
         r.json().then((err) => setErrors(err.errors));
