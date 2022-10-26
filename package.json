@@ -13,6 +13,8 @@
     "dependencies": {
         "@emotion/react": "^11.10.4",
         "@emotion/styled": "^11.10.4",
-        "@mui/joy": "^5.0.0-alpha.51"
+        "@mui/joy": "^5.0.0-alpha.51",
+        "bootstrap": "^5.2.2",
+        "react-bootstrap": "^2.5.0"
     }
 }

@@ -1,10 +1,6 @@
 
 import React, { useState } from "react";
-import AspectRatio from '@mui/joy/AspectRatio';
-import Box from '@mui/joy/Box';
-import Button from '@mui/joy/Button';
-import Card from '@mui/joy/Card';
-import Typography from '@mui/joy/Typography';
+import Button from 'react-bootstrap/Button';
 
 import './App.css';
 
@@ -93,7 +89,7 @@ function ShoeUser({ user, shoe, review, handleDeleteReviews,setcurrentUser, hand
         });
       }
   
-    let cool3 = review.filter((item)=> item.user_id === user.id).map((u)=> <ul class = "cool" key ={u.shoe_review}> {u.shoe.name}: {u.shoe_review} <button onClick = {()=> handleDeleteReview(u)}>Delete</button></ul>)
+    let cool3 = review.filter((item)=> item.user_id === user.id).map((u)=> <ul className = "cool" key ={u.shoe_review}> {u.shoe.name}: {u.shoe_review} <button onClick = {()=> handleDeleteReview(u)}>Delete 👟</button></ul>)
 
     
   // console.log(user.shoes.map((item)=> <option value={item.id}>{item.name}</option> ))
@@ -127,7 +123,7 @@ return (
         onChange={(e) => setShoeName(e.target.value)}>
             {shoemapz}
         </select>
-        <label htmlFor="shoe_review">Username</label>
+        <label htmlFor="shoe_review">Shoe Review</label>
         <input
           type="text"
           id="username"

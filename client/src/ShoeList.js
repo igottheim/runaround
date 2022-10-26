@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import Button from 'react-bootstrap/Button';
 
 function ShoeList({shoe, setShoes}) {
     const [name, setName] = useState("");
@@ -7,7 +8,7 @@ function ShoeList({shoe, setShoes}) {
     const [price, setPrice] = useState("");
     const [image_url, setImageUrl] = useState("");
 
-let shoes = shoe.map((i)=> <h1> Name:{i.name} Price: ${i.price} <img className = "image" src = {i.image_url}></img> </h1>)
+let shoes = shoe.map((i)=> <div className = "container"> <h1 className = "sweet"> Name:{i.name} Price: ${i.price} <img className = "image" src = {i.image_url}></img> </h1></div>)
  
 
 
@@ -34,7 +35,7 @@ return(
     <div> {shoes}
     
     
-    <div>
+    <div className = "newShoe">
       <form onSubmit={(e)=> handleSubmit(e)}>
         <h1>Add A New Shoe</h1>
         <label htmlFor="name">name</label>
@@ -61,11 +62,12 @@ return(
           value={image_url}
           onChange={(e) => setImageUrl(e.target.value)}
         />
-        <button type="submit">Submit Shoe</button>
+        <button type="submit">👟</button>
       </form>
-      {errors.map((err) => (
-          <h1 key={err}>{err}</h1>
+        {errors.map((err) => (
+          <h1 className = "errors" key={err}>{err}</h1>
         ))}
+      
     </div>
 
     </div>

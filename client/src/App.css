@@ -1,21 +1,33 @@
 body {
-  background: linear-gradient(
-    90deg,
-    rgb(107, 107, 183) 0%,
-    rgb(147, 147, 173) 100%
-  );
+  background: linear-gradient(to bottom, #209698, #ff606e);
+
+  height: 1000px;
+
 }
 
 .image {
-  max-width: 25%;
+  border: 10px solid rgb(212, 11, 11);
+  border-radius: 4px;
+  padding: 10px;
+  width: 150px;
 }
 
 .App{
+ 
   width: 750px;
+  height: 1000px;
   margin: auto;
-  border: 10px solid #73AD21;
 
 }
+
+.container{
+  text-align:left;
+  padding: 10px 20px;
+  background-color: rgb(70, 70, 168);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
 
 button{
   background-color: rgb(70, 70, 168);
@@ -32,6 +44,47 @@ align-self: center;
 .cool{
   font-family:Georgia, 'Times New Roman', Times, serif;
   font-size: medium;
-  background-color: rgb(6, 38, 29);
+  background-color: rgb(62, 120, 104);
+  margin-left: 5%;
+  margin-right: 5%
 
 }
+
+.sweet{
+ 
+  background: linear-gradient(to bottom, #837d81, #474998);
+  border-radius: 25px;
+  height: 200px;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  border: 4px solid #b0215e;
+  margin-bottom: 20px;
+
+}
+
+.newShoe{
+  background: linear-gradient(to bottom, #837d81, #474998);
+  height: 110px;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  border: 4px solid #b0215e;
+  margin-bottom: 20px;
+
+
+}
+
+.error{
+
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+
