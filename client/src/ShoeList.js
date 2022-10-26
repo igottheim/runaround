@@ -7,7 +7,7 @@ function ShoeList({shoe, setShoes}) {
     const [price, setPrice] = useState("");
     const [image_url, setImageUrl] = useState("");
 
-let shoes = shoe.map((i)=> <h1> Name:{i.name} Price: ${i.price} <img class = "image" src = {i.image_url}></img> </h1>)
+let shoes = shoe.map((i)=> <h1> Name:{i.name} Price: ${i.price} <img className = "image" src = {i.image_url}></img> </h1>)
  
 
 

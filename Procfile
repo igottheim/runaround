@@ -1,2 +1,2 @@
 web: bundle exec rails s
-release: bin/rake db:seed db:migrate
+release: bin/rake db:reset db:seed db:migrate
