@@ -65,6 +65,12 @@ useEffect(()=>{
     console.log(errors1)
   }
 
+  function setReview(e)
+  {
+   setReviews([...reviews, e])
+   console.log(reviews)
+  }
+
 
   function handleDeleteReview(e)
   {
@@ -88,7 +94,7 @@ useEffect(()=>{
         {currentUser ? (
           <Switch>
             <Route path="/">
-              <Home user = {currentUser} shoe = {shoes} review = {reviews} handleReviewDelete= {handleDeleteReview} deleteUser = {deleteUser}></Home>
+              <Home user = {currentUser} shoe = {shoes} review = {reviews} handleReviewDelete= {handleDeleteReview} deleteUser = {deleteUser} setReview = {setReview}></Home>
             </Route>
           </Switch>
         ) : (

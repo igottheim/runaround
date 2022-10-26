@@ -5,10 +5,11 @@ import './App.css';
 
 
 
-function ShoeUser({ user, shoe, review, handleDeleteReview, deleteUser, handleUserChange, setUser}) {
+function ShoeUser({ user, shoe, review, handleDeleteReview, deleteUser, handleUserChange, setUser, setReview}) {
     const [username, setUsername] = useState("");
     const [errors, setErrors] = useState([]);
     const [shoe_review, setShoeReview] = useState("");
+    const [name, setShoeName] = useState("");
   
 
     function handleDeleteReview(e)
@@ -38,6 +39,38 @@ function ShoeUser({ user, shoe, review, handleDeleteReview, deleteUser, handleUs
         }).then((r) => {
           if (r.ok) {
             r.json().then((user) => setUser(user))
+            alert(`Username Changed to ${username}!`)
+          }
+          else {
+            r.json().then((err) => setErrors(err.error));
+          }
+        });
+      }
+
+      
+      function handleUserAddReview(e) {
+        e.preventDefault();
+        // console.log(e.target[0].value)
+        // console.log(e.target[1].value)
+        // console.log(user.id)
+        fetch(`/reviews`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            "shoe_id":e.target[0].value ,
+            "user_id": user.id,
+            "shoe_review":e.target[1].value
+          }),
+        }).then((r) => {
+          if (r.ok) {
+            r.json().then(() => setReview({
+              "shoe_id":parseInt(e.target[0].value) ,
+              "user_id": user.id,
+              "shoe_review":e.target[1].value
+            }))
+            alert(`Review Added!`)
           }
           else {
             r.json().then((err) => setErrors(err.error));
@@ -45,9 +78,9 @@ function ShoeUser({ user, shoe, review, handleDeleteReview, deleteUser, handleUs
         });
       }
   
-    console.log(review)
+    // console.log(review)
     let cool = user.shoes.map((u)=> <ul>{u.name}: ${u.price} <button onClick = {()=> handleDeleteShoe(u)}>Delete</button></ul>)
-    console.log(review.filter((u)=> u.user_id === user.id))
+    // console.log(review.filter((u)=> u.user_id === user.id))
     let cool2 = user.reviews.map((u)=> <ul> {u.shoe_review} <button onClick = {()=> handleDeleteReview(u)}>Delete</button></ul>)
     
     
@@ -74,39 +107,26 @@ return (
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        {username}
         <button type="submit">UserName</button>
       </form>
-      <form onSubmit={handleUserChange}>
-        <h1>Add A Review</h1>
-        <label htmlFor="show_review">Username</label>
-        <input
-          type="dropdown"
-          id="shoe_review"
-          autoComplete="off"
-          value={username}
-          onChange={(e) => setShoeReview(e.target.value)}
-        />
-       <select name="selectList" id="selectList">
+      <form onSubmit={handleUserAddReview}>
+        <h1>Add a Shoe And Review to Your List!</h1>
+        <label htmlFor="name">Shoe</label>
+       <select name="selectList" id="selectList"
+        autoComplete="off"
+        value={name}
+        onChange={(e) => setShoeName(e.target.value)}>
             {shoemapz}
-   
         </select>
-        <button type="submit">Review</button>
-      </form>
-      <form onSubmit={handleUserChange}>
-        <h1>Add A Review</h1>
-        <label htmlFor="show_review">Username</label>
+        <label htmlFor="shoe_review">Username</label>
         <input
-          type="dropdown"
-          id="shoe_review"
+          type="text"
+          id="username"
           autoComplete="off"
-          value={username}
+          value={shoe_review}
           onChange={(e) => setShoeReview(e.target.value)}
         />
-       <select name="selectList" id="selectList">
-            {shoemap}
-   
-        </select>
+        
         <button type="submit">Review</button>
       </form>
 </>
