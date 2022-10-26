@@ -15,7 +15,7 @@ function NavBar({ user, setUser }) {
 
   return (
     <header>
-      <div>
+      <div className = "form-control">
         <Link class = "link" to="/">Home</Link>
       </div>
       <div>

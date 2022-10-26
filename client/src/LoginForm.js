@@ -24,19 +24,19 @@ function Login({ setUser }) {
   }
 
   return (
-    <div>
+    <div className = "container">
       <form onSubmit={handleSubmit}>
         <h1>Login</h1>
-        <label htmlFor="username">Username</label>
-        <input
+        <label className = "link5" htmlFor="username">Username</label>
+        <input className = "link5"
           type="text"
           id="username"
           autoComplete="off"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label htmlFor="password">Password</label>
-        <input
+        <label className = "link5" htmlFor="password">Password</label>
+        <input className = "link5"
           type="password"
           id="password"
           autoComplete="current-password"

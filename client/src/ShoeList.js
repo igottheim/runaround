@@ -63,10 +63,13 @@ return(
           onChange={(e) => setImageUrl(e.target.value)}
         />
         <button type="submit">👟</button>
-      </form>
+        <div>
         {errors.map((err) => (
-          <h1 className = "errors" key={err}>{err}</h1>
+          <span className = "link3" key={err}>     {err}!</span>
         ))}
+        </div>
+      </form>
+        
       
     </div>
 

@@ -24,10 +24,6 @@ function ShoeUser({ user, shoe, review, handleDeleteReviews,setcurrentUser, hand
     }
 
 
-    function handleDeleteShoe(e)
-    {
-        console.log(e)
-    }
 
     function handleUserChange(e) {
         e.preventDefault();
@@ -89,7 +85,7 @@ function ShoeUser({ user, shoe, review, handleDeleteReviews,setcurrentUser, hand
         });
       }
   
-    let cool3 = review.filter((item)=> item.user_id === user.id).map((u)=> <ul className = "cool" key ={u.shoe_review}> {u.shoe.name}: {u.shoe_review} <button onClick = {()=> handleDeleteReview(u)}>Delete 👟</button></ul>)
+    let cool3 = review.filter((item)=> item.user_id === user.id).map((u)=> <ul className = "link1" key ={u.shoe_review}> {u.shoe.name}: {u.shoe_review} <button onClick = {()=> handleDeleteReview(u)}>👟👟👟👟</button></ul>)
 
     
   // console.log(user.shoes.map((item)=> <option value={item.id}>{item.name}</option> ))
@@ -98,7 +94,7 @@ function ShoeUser({ user, shoe, review, handleDeleteReviews,setcurrentUser, hand
 
 return (
     <>
-<ol> {user.username}'s Reviews
+<ol className = "container"> {user.username}'s Reviews
     {cool3}</ol>
 
     <button onClick = {()=>deleteUser(user)} >Delete User</button>
@@ -112,7 +108,7 @@ return (
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <button type="submit">UserName</button>
+        <button type="submit">👟👟👟👟👟</button>
       </form>
       <form onSubmit={(e)=> handleUserAddReview(e)}>
         <h1>Add a Shoe And Review to Your List!</h1>
@@ -132,7 +128,7 @@ return (
           onChange={(e) => setShoeReview(e.target.value)}
         />
         
-        <button type="submit">Review</button>
+        <button type="submit">👟👟👟👟👟</button>
       </form>
 </>
 
