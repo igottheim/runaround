@@ -87,7 +87,7 @@ function ShoeUser({ user, shoe, review, handleDeleteReviews,setcurrentUser, setU
         });
       }
   
-    let cool3 = review.filter((item)=> item.user_id === user.id).map((u)=> <ul className = "link1" key ={u.shoe_review}> {u.shoe.name}: {u.shoe_review} <button onClick = {()=> handleDeleteReview(u)}>👟👟👟👟</button></ul>)
+    let cool3 = review.filter((item)=> item.user_id === user.id).map((u)=> <ul className = "link1" key ={u.shoe_review}> {u.shoe.name}: {u.shoe_review} <button className = "div1" onClick = {()=> handleDeleteReview(u)}>👟👟Delete Review👟👟</button></ul>)
 
   
   // console.log(user.shoes.map((item)=> <option value={item.id}>{item.name}</option> ))
@@ -95,10 +95,10 @@ function ShoeUser({ user, shoe, review, handleDeleteReviews,setcurrentUser, setU
     
 return (
     <>
-<ol className = "container"> {user.username}'s Reviews
+<ol className = "div5"> {user.username}'s Reviews
     {cool3}</ol>
 
-    <button onClick = {()=>deleteUser(user)} >Delete User</button>
+    <button className = "div1" onClick = {()=>deleteUser(user)} >👟👟 Delete User 👟👟</button>
     <form onSubmit={handleUserChange}>
         <h1>Change Your Username!</h1>
         <label htmlFor="username">Username</label>
@@ -109,7 +109,7 @@ return (
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <button type="submit">👟👟👟👟👟</button>
+        <button className = "div1"  type="submit">👟👟 Submit New Username 👟👟</button>
       </form>
       <form onSubmit={(e)=> handleUserAddReview(e)}>
         <h1>Add a Shoe And Review to Your List!</h1>
@@ -129,7 +129,7 @@ return (
           onChange={(e) => setShoeReview(e.target.value)}
         />
         
-        <button type="submit">👟👟👟👟👟</button>
+        <button className = "div1" type="submit">👟👟 Add Review 👟👟</button>
         
       </form>
       
