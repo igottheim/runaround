@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :authorize, only: [:show]
+    wrap_parameters format: []
 
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
@@ -16,9 +17,10 @@ class UsersController < ApplicationController
         end
     
         def update
+        
             user = User.find(params[:id])
             user.update!(user_params)
-    
+            
             render json: user, status: :ok
         end
     
@@ -56,7 +58,7 @@ class UsersController < ApplicationController
         end
     
         def user_params
-            params.permit(:first_name, :last_name, :username, :password, :password_confirmation)
+            params.permit(:first_name, :last_name, :username, :password, :password_confirmation, :id)
         end
 
         def authorize

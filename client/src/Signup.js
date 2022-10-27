@@ -6,7 +6,7 @@ function SignUp({ setUser}) {
   const [password, setPassword] = useState("");
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  // const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
 
 
@@ -20,7 +20,7 @@ function SignUp({ setUser}) {
       body: JSON.stringify({
         username,
         password,
-        password_confirmation: passwordConfirmation,
+        // password_confirmation: passwordConfirmation,
         first_name,
         last_name,
       }),
@@ -56,15 +56,15 @@ function SignUp({ setUser}) {
           onChange={(e) => setPassword(e.target.value)}
           autoComplete="current-password"
         />
-        <label  className = "div3" htmlFor="password">Password Confirmation</label>
-        <input
+        {/* <label  className = "div3" htmlFor="password">Password Confirmation</label> */}
+        {/* <input
          className = "link2"
           type="password"
           id="password_confirmation"
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           autoComplete="current-password"
-        />
+        /> */}
          <label  className = "div3" htmlFor="first_name">First Name</label>
         <input
          className = "link2"

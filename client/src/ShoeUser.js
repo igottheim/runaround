@@ -6,7 +6,7 @@ import './App.css';
 
 
 
-function ShoeUser({ user, shoe, review, handleDeleteReviews,setcurrentUser, handleUserChange, setUser, setReview}) {
+function ShoeUser({ user, shoe, review, handleDeleteReviews,setcurrentUser, setUser, setReview}) {
     const [username, setUsername] = useState("");
     const [errors, setErrors] = useState([]);
     const [shoe_review, setShoeReview] = useState("");
@@ -27,14 +27,15 @@ function ShoeUser({ user, shoe, review, handleDeleteReviews,setcurrentUser, hand
 
     function handleUserChange(e) {
         e.preventDefault();
-       
+       console.log(e.target[0].value)
+       console.log(username)
         fetch(`/users/${user.id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            username,
+            username
           }),
         }).then((r) => {
           if (r.ok) {
@@ -54,7 +55,6 @@ function ShoeUser({ user, shoe, review, handleDeleteReviews,setcurrentUser, hand
             {
               method: "DELETE"
             })
-           
          setcurrentUser(null)
       }
     

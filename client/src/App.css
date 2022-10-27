@@ -23,7 +23,6 @@ body {
 .container{
   text-align:left;
   padding: 10px 20px;
-  background-color: rgb(70, 70, 168);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
@@ -68,7 +67,7 @@ margin-left: 15%;
       font-size:xx-large;
       font-style: bold;
       width: 500px;
-      margin-left: ;
+      margin-left: 0;
       text-align: center;
       margin-bottom: 0;
       color: rgb(98, 7, 7);
@@ -80,7 +79,7 @@ margin-left: 15%;
       font-size:xx-large;
       font-style: bold;
       width: 600px;
-      margin-left: ;
+      margin-left: 0;
       text-align: center;
       margin-bottom: 0;
       color: rgb(52, 128, 67);
