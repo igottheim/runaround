@@ -99,6 +99,9 @@ useEffect(()=>{
       <main>
         {currentUser ? (
           <Switch>
+              <Route path="/shoe">
+             <ShoeList shoe = {shoes} setShoes = {setShoes1}/>
+            </Route>
             <Route path="/">
               <Home user = {currentUser} shoe = {shoes} review = {reviews} handleDeleteReviews= {handleDeleteReviews} setcurrentUser = {setcurrentUser1} setReview = {setReview} setUser = {setUser1} ></Home>
             </Route>

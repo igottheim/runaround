@@ -15,20 +15,22 @@ function NavBar({ user, setUser }) {
 
   return (
     <header>
-      <div className = "form-control">
-        <Link class = "link" to="/">Home</Link>
+      <div className = "div3">
+        <Link class = "div1" to="/">Home</Link>
+        
       </div>
-      <div>
+      <div className = "div2">
         {user ? (
             <>
+            <Link class = "div1" to="/shoe">Shoe List</Link>
           <button onClick={handleLogoutClick}>Logout</button>
           
           </>
         ) : (
           <>
-            <Link class = "link" to="/signup">Signup</Link>
-            <Link class = "link" to="/login">Login</Link>
-            <Link class = "link" to="/shoe">Shoe List</Link>
+            <Link class = "div1" to="/signup">Signup</Link>
+            <Link class = "div1" to="/login">Login</Link>
+            <Link class = "div1" to="/shoe">Shoe List</Link>
           </>
         )}
       </div>

@@ -37,8 +37,8 @@ function SignUp({ setUser}) {
   return (
     <div>
       <Form  className="form-control" onSubmit={handleSubmit}>
-        <h1>Sign Up</h1>
-        <label  className = "link2" htmlFor="username">Username</label>
+        <h1 className = "div3">Sign Up</h1>
+        <label  className = "div3" htmlFor="username">Username</label>
         <input
         className = "link2"
           type="text"
@@ -47,7 +47,7 @@ function SignUp({ setUser}) {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label  className = "link2" htmlFor="password">Password</label>
+        <label  className = "div3" htmlFor="password">Password</label>
         <input
          className = "link2"
           type="password"
@@ -56,7 +56,7 @@ function SignUp({ setUser}) {
           onChange={(e) => setPassword(e.target.value)}
           autoComplete="current-password"
         />
-        <label  className = "link2" htmlFor="password">Password Confirmation</label>
+        <label  className = "div3" htmlFor="password">Password Confirmation</label>
         <input
          className = "link2"
           type="password"
@@ -65,7 +65,7 @@ function SignUp({ setUser}) {
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           autoComplete="current-password"
         />
-         <label  className = "link2" htmlFor="first_name">First Name</label>
+         <label  className = "div3" htmlFor="first_name">First Name</label>
         <input
          className = "link2"
           type="text"
@@ -74,7 +74,7 @@ function SignUp({ setUser}) {
           onChange={(e) => setFirstName(e.target.value)}
           autoComplete="off"
         />
-         <label  className = "link2" htmlFor="last_name">Last Name</label>
+         <label  className = "div3" htmlFor="last_name">Last Name</label>
         <input
          className = "link2"
           type="text"
