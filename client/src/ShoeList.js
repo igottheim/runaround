@@ -38,7 +38,7 @@ return(
     <div className = "newShoe">
       <form onSubmit={(e)=> handleSubmit(e)}>
         <h1 className = "link6">Add A New Shoe</h1>
-        <label htmlFor="name">name</label>
+        <label htmlFor="name">Name</label>
         <input
           type="text"
           id="name"
