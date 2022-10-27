@@ -20,7 +20,6 @@ class UsersController < ApplicationController
         
             user = User.find(params[:id])
             user.update!(user_params)
-            
             render json: user, status: :ok
         end
     

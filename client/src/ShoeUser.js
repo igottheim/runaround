@@ -44,6 +44,7 @@ function ShoeUser({ user, shoe, review, handleDeleteReviews,setcurrentUser, setU
           }
           else {
             r.json().then((err) => setErrors(err.error));
+            alert("Username blank or already in use!!!")
           }
         });
       }
@@ -81,17 +82,17 @@ function ShoeUser({ user, shoe, review, handleDeleteReviews,setcurrentUser, setU
           }
           else {
             r.json().then((err) => setErrors(err.error));
+            alert("Please add a review and resubmit!!!")
           }
         });
       }
   
     let cool3 = review.filter((item)=> item.user_id === user.id).map((u)=> <ul className = "link1" key ={u.shoe_review}> {u.shoe.name}: {u.shoe_review} <button onClick = {()=> handleDeleteReview(u)}>👟👟👟👟</button></ul>)
 
-    
+  
   // console.log(user.shoes.map((item)=> <option value={item.id}>{item.name}</option> ))
     let shoemapz = shoe.map((item)=> <option value={item.id}>{item.name}</option> )
     
-
 return (
     <>
 <ol className = "container"> {user.username}'s Reviews
@@ -129,7 +130,9 @@ return (
         />
         
         <button type="submit">👟👟👟👟👟</button>
+        
       </form>
+      
 </>
 
 )
