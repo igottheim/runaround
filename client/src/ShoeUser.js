@@ -87,7 +87,7 @@ function ShoeUser({ user, shoe, review, handleDeleteReviews,setcurrentUser, setU
         });
       }
   
-    let cool3 = review.filter((item)=> item.user_id === user.id).map((u)=> <ul className = "link1" key ={u.shoe_review}> {u.shoe.name}: {u.shoe_review} <button className = "div1" onClick = {()=> handleDeleteReview(u)}>👟👟Delete Review👟👟</button></ul>)
+    let cool3 = review.filter((item)=> item.user_id === user.id).map((u)=> <ul className = "sweet1" key ={u.shoe_review}> {u.shoe.name}: {u.shoe_review} <button className = "div1" onClick = {()=> handleDeleteReview(u)}>👟👟Delete Review👟👟</button></ul>)
 
   
   // console.log(user.shoes.map((item)=> <option value={item.id}>{item.name}</option> ))

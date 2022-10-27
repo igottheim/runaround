@@ -14,11 +14,8 @@ function NavBar({ user, setUser }) {
   }
 
   return (
-    <header>
-      {/* <div classNameName = "div3">
-        <Link className = "div1" to="/">Home</Link>
-      </div> */}
-      <div classNameName = "div2">
+    <header  >
+      <div >
         {user ? (
             <>
             <Link className = "div2" to="/">User Information</Link>
@@ -28,10 +25,10 @@ function NavBar({ user, setUser }) {
           </>
         ) : (
           <>
-          <Link className = "div1" to="/">Home</Link>
-            <Link className = "div1" to="/signup">Signup</Link>
-            <Link className = "div1" to="/login">Login</Link>
-            <Link className = "div1" to="/shoe">Shoe List</Link>
+          <Link className = "div5" to="/">Home</Link>
+            <Link className = "div5" to="/signup">Signup</Link>
+            <Link className = "div5" to="/login">Login</Link>
+            <Link className = "div5" to="/shoe">Shoe List</Link>
           </>
         )}
       </div>

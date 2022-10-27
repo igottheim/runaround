@@ -5,6 +5,7 @@ import NavBar from "./NavBar";
 import Home from "./Home";
 import SignUp from "./Signup";
 import ShoeList from "./ShoeList";
+import '/Users/iangottheim/Development/code/phase-4/runaround-project/client/src/images/istockphoto-1185370324-612x612.jpg'
 
 
 import './App.css';
@@ -96,6 +97,7 @@ useEffect(()=>{
     <BrowserRouter>
       <div className="App">
       <NavBar user={currentUser} setUser={setUser} />
+      
       <main>
         {currentUser ? (
           <Switch>
